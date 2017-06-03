@@ -10,19 +10,22 @@ namespace Popnikos\StringNormalizer;
 
 /**
  * Description of NoLigature
- *
+ * Replace common ligatures by there literal multiple character representation 
  * @author popnikos
  */
 class NoLigature extends AbstractNormalizer{
+    
     private static $ligatured = [
-        'Ӕ'=>'AE', 'æ'=>'ae', 'ȸ'=>'db', 'ȹ'=>'qp', 'Ĳ'=>'IJ', 'ĳ'=>'ij', 
+        'Æ'=>'AE', 'æ'=>'ae', 'ȸ'=>'db', 'ȹ'=>'qp', 'Ĳ'=>'IJ', 'ĳ'=>'ij', 
         'Œ'=>'OE', 'œ'=>'oe', 'ﬀ'=>'ff', 'ﬁ'=>'fi', 'ﬂ'=>'fl', 'ﬃ'=>'ffi',
-        'ﬄ'=>'ffl', 'ﬆ'=>'st', 'ﬅ', 'st'
-        
+        'ﬄ'=>'ffl', 'ﬆ'=>'st', 'ﬅ', 'st',
+        // cyrilic
+        'Ӕ'=>'AE', 'ӕ'=>'ae'
     ];
     
-    public function normalize($str = '') {
-        return strtr($str,$this->ligaturedStringList(), $this->unligaturedStringList());
+    public function normalize($str = '') 
+    {
+        return str_replace(self::ligaturedList(), self::unligaturedList(),$str);
     }
     
     public static function ligaturedList()
@@ -37,11 +40,11 @@ class NoLigature extends AbstractNormalizer{
     
     public static function ligaturedStringList()
     {
-        return implode('',  $this->ligaturedList());
+        return implode('', self::ligaturedList());
     }
     
     public static function unligaturedStringList()
     {
-        return implode('',  $this->unligaturedList());
+        return implode('', self::unligaturedList());
     }
 }

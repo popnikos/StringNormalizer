@@ -1,6 +1,6 @@
 {
     "name": "popnikos/StringNormalizer",
-    "description": "Tools provind fluent normalizatino for strings",
+    "description": "Tools providing fluent normalization for strings",
     "license": "GPL-3.0",
     "require": {
       "php":"^5.6"  

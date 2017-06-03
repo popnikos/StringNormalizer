@@ -33,7 +33,7 @@ class NoAccent extends AbstractNormalizer
     ];
     
     public function normalize($str = '') {
-        return strtr($str);
+        return strtr($str, self::$accents);
     }
     
     public static function accentuatedList()
@@ -48,11 +48,11 @@ class NoAccent extends AbstractNormalizer
     
     public static function accentuatedStringList()
     {
-        return implode('',  $this->accentuatedList());
+        return implode('', self::accentuatedList());
     }
     
     public static function unaccentuatedStringList()
     {
-        return implode('',  $this->unaccentuatedList());
+        return implode('', self::unaccentuatedList());
     }
 }

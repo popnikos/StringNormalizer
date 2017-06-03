@@ -8,9 +8,12 @@
 
 namespace Popnikos\StringNormalizer;
 
+use Exception;
+use InvalidArgumentException;
+
 /**
  * Description of CompoundNormalizer
- * Build a sequence of normalization to apply on string
+ * Build a sequence of normalization to apply on a string
  * @author popnikos
  */
 class CompoundNormalizer extends AbstractNormalizer
@@ -21,11 +24,10 @@ class CompoundNormalizer extends AbstractNormalizer
      */
     private $classes=[];
     
-    final public function normalize($str='') {
+    public function normalize($str='') {
         $normalized = strval($str);
-        foreach ($this->classes as $class); {
-            $normalizer = new $class($normalized);
-            $normalized = call_user_func([$normalizer,'normalize'], $normalized);
+        foreach ($this->classes as $class) {
+            $normalized = call_user_func([new $class(),'normalize'], $normalized);
         }
         return $normalized;
     }
@@ -35,7 +37,7 @@ class CompoundNormalizer extends AbstractNormalizer
             throw new Exception("{$normalizerClass} doesn't exists");
         }
         if (!is_subclass_of($normalizerClass, AbstractNormalizer::class)) {
-            throw new \InvalidArgumentException("{$normalizerClass} must be instance of " . AbstractNormalizer::class);
+            throw new InvalidArgumentException("{$normalizerClass} must be instance of " . AbstractNormalizer::class);
         }
         $this->classes[] = $normalizerClass;
         return $this;
