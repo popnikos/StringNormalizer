@@ -9,14 +9,12 @@
 namespace Popnikos\StringNormalizer;
 
 /**
- * Description of Lower
+ * Description of NoMultipleWhiteSpace
  *
  * @author popnikos
  */
-class Lower extends AbstractNormalizer{
+class NoMultipleWhiteSpace extends AbstractNormalizer{
     public function normalize($str = '') {
-        // Lower case string
-        echo json_decode("\u04d4\u00c6",false);
-        return mb_strtolower($str);
+        return preg_replace('/\s+/u',' ',$str);
     }
 }

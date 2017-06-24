@@ -47,4 +47,8 @@ class NoLigature extends AbstractNormalizer{
     {
         return implode('', self::unligaturedList());
     }
+    
+    public static function isLigatured($char) {
+        return in_array($char, self::ligaturedList());
+    }
 }

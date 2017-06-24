@@ -10,7 +10,7 @@ namespace Popnikos\StringNormalizer;
 
 /**
  * Description of NoAccent
- *
+ * 
  * @author popnikos
  */
 class NoAccent extends AbstractNormalizer
@@ -54,5 +54,9 @@ class NoAccent extends AbstractNormalizer
     public static function unaccentuatedStringList()
     {
         return implode('', self::unaccentuatedList());
+    }
+    
+    public static function isAccentuated($char) {
+        return in_array($char, self::accentuatedList());
     }
 }
