@@ -26,7 +26,7 @@ class AlphaNumericTest extends TestCase {
         return [
             ['azertyUIOP',NULL,'azertyUIOP'],
             ['azerty.UIOP',NULL,'azerty UIOP'],
-            ['azerty.U 42ç§IOP',NULL,'azerty U 42  IOP'],
+            ['azerty.U 42ç§IOP',NULL,'azerty U 42 IOP'],
             ['àzerty.UIOP',NULL,' zerty UIOP'],
             ['àzerty.UIOP', AlphaNumeric::ALLOW_ACCENT,'àzerty UIOP'],
             ['æzærty.UIOP',NULL,' z rty UIOP'],

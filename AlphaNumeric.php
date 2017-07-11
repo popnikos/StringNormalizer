@@ -20,7 +20,7 @@ class AlphaNumeric extends AbstractNormalizer {
 
     public function normalize($str = '') {
         // Extra options
-        $options = func_get_arg(1);
+        $options = func_num_args()<2?null:func_get_arg(1);
         $accent='';
         $lig = '';
         if ($options) {
@@ -32,7 +32,8 @@ class AlphaNumeric extends AbstractNormalizer {
             }
         }
         $pattern = "/[^a-zA-Z0-9{$accent}{$lig}]/u";
-        return(preg_replace($pattern, ' ', $str));
+        $normalized = preg_replace($pattern, ' ', $str);
+        return (new NoMultipleWhiteSpace)->normalize($normalized);
     }
 
 }
