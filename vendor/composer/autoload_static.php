@@ -47,7 +47,7 @@ class ComposerStaticInit6881db49fb0faccd71888193292792ee
         ),
         'Popnikos\\StringNormalizer\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/',
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

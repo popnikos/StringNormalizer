@@ -9,6 +9,6 @@
         "phpunit/phpunit": "5.5.*"
     },
     "autoload": {
-        "psr-4": {"Popnikos\\StringNormalizer\\": "./"}
+        "psr-4": {"Popnikos\\StringNormalizer\\": "./src/"}
     }
 }
