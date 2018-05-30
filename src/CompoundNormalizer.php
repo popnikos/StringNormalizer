@@ -25,9 +25,11 @@ class CompoundNormalizer extends AbstractNormalizer
     private $classes=[];
     
     public function normalize($str='') {
-        $normalized = array_reduce($this->classes, function($str,$class){
-            return (new $class)($str);
-        }, strval($str));
+        $callable = function ($str,$class){
+            $normalizer=new $class();
+            return $normalizer($str);
+        };
+        $normalized = array_reduce($this->classes, $callable, strval($str));
         return $normalized;
     }
 
