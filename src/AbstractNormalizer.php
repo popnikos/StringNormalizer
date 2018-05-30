@@ -22,4 +22,12 @@ abstract class AbstractNormalizer implements NormalizerInterface
      * @return string Normalized representation of $str parameter 
      */
     abstract public function normalize($str='');
+    
+    /**
+     * In order to use it as a Callable
+     */
+    public function __invoke($str)
+    {
+        return $this->normalize($str);
+    }
 }
