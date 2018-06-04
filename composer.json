@@ -1,7 +1,8 @@
 {
-    "name": "popnikos/StringNormalizer",
+    "name": "popnikos/string-normalizer",
     "description": "Tools providing fluent normalization for strings",
     "license": "GPL-3.0",
+    "tags":["strings","tranform","normalize","accent","ligatured"],
     "require": {
       "php":"^5.6 || ^7.0"  
     },
